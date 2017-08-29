@@ -3,20 +3,23 @@ ActiveAdmin.register_page 'Dashboard' do
   menu :priority => 1, :label => proc{ I18n.t('active_admin.dashboard') }
 
   content :title => proc{ I18n.t('active_admin.dashboard') } do
-    panel 'Teikei' do
-      unless Rails.env.production?
-        para %(Currently deployed: #{link_to(`git rev-parse --short HEAD`, "https://github.com/teikei/teikei/commit/#{`git rev-parse HEAD`}")}).html_safe
-      else
-        para %(Currently deployed: #{link_to(`cat REVISION`, "https://github.com/teikei/teikei/commit/#{`cat REVISION`}")}).html_safe
-      end
-
-    end
     columns do
+      column do
+        panel 'Teikei' do
+          unless Rails.env.production?
+            para %(Currently deployed: #{link_to(`git rev-parse --short HEAD`, "https://github.com/teikei/teikei/commit/#{`git rev-parse HEAD`}")}).html_safe
+          else
+            para %(Currently deployed: #{link_to(`cat REVISION`, "https://github.com/teikei/teikei/commit/#{`cat REVISION`}")}).html_safe
+          end
+        end
+      end
       column do
         panel 'Statistics' do
           para " There are #{Place.count} places: #{Depot.count} depots, #{Farm.count} farms"
         end
       end
+    end
+    columns do
       column do
         panel 'Most recent Farm activity' do
           ul do
@@ -31,6 +34,15 @@ ActiveAdmin.register_page 'Dashboard' do
           ul do
             Depot.order('updated_at desc').limit(10).find_each do |depot|
               li link_to(depot.name, admin_depot_path(depot))
+            end
+          end
+        end
+      end
+      column do
+        panel 'Most recent Initiative activity' do
+          ul do
+            Initiative.order('updated_at desc').limit(10).find_each do |initiative|
+              li link_to(initiative.name, admin_initiative_path(initiative))
             end
           end
         end
