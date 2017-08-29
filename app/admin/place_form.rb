@@ -1,13 +1,13 @@
 module PlaceForm
   @place_form = Proc.new do |f|
     f.inputs 'Name and Description' do
-      f.input :name
+      f.input :name, as: :string
+      f.input :url, as: :string
       f.input :description
-      f.input :is_established
     end
     f.inputs 'Location' do
-      f.input :city
-      f.input :address
+      f.input :city, as: :string
+      f.input :address, as: :string
       f.input :latitude
       f.input :longitude
     end

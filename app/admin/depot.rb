@@ -5,7 +5,7 @@ ActiveAdmin.register Depot do
       input :places, as: :select, collection: Farm.all
     end
     inputs 'Additional Depot Info' do
-      input :delivery_days
+      input :delivery_days, as: :string
     end
     actions
   end
