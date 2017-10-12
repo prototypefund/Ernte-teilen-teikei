@@ -178,7 +178,13 @@
         "contact_by_phone": "Ich möchte telefonisch kontaktiert werden",
         "since": "seit",
         "from": "ab",
-        "function": "Was ist deine Aufgabe bei diesem Betrieb?"
+        "function": "Was ist deine Aufgabe bei diesem Betrieb?",
+        "goals": {
+          "land": "Wir suchen Land oder Hof",
+          "staff": "Wir suchen GärtnerInnen oder LandwirtInnen",
+          "organizers": "Wir suchen Mitglieder für unser Organisationsteam",
+          "consumers": "Wir suchen KonsumentInnen"
+        }
       },
       "placeholders": {
         "click_here": null,
