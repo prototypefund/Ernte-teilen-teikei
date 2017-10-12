@@ -17,4 +17,53 @@ ActiveAdmin.register Depot do
     column :name
     column :location
   end
+
+  show do
+    panel 'Name and Description' do
+      table do
+        tr do
+          td 'Name'
+          td depot.name
+        end
+        tr do
+          td 'URL'
+          td depot.url
+        end
+        tr do
+          td 'Description'
+          td depot.description
+        end
+      end
+    end
+
+    panel 'Location' do
+      table do
+        tr do
+          td 'City'
+          td depot.city
+        end
+        tr do
+          td 'Address'
+          td depot.address
+        end
+        tr do
+          td 'Latitude / longitude'
+          td [depot.latitude, depot.longitude].join(' / ')
+        end
+      end
+    end
+
+    panel 'Details' do
+      table do
+        tr do
+          td 'Associated farms'
+          # TODO: Display associated farms
+        end
+        tr do
+          td 'Delivery days'
+          td depot.delivery_days
+        end
+      end
+    end
+  end
 end
